@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+file -0 -F" " "$argv" | grep -aPo '\0\s*\K\S+' | string lower
