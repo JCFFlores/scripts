@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+if test (count $argv) -lt 2
+    echo "Error: Two arguments required"
+    exit 1
+end
+
+
+for f in *.$argv[1]
+    if test -f "$f"
+        set name (rootname "$f")
+        mv "$f" "$name.$argv[2]"
+    end
+end
