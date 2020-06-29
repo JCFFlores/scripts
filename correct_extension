@@ -1,0 +1,20 @@
+#!/usr/bin/env fish
+
+if test (count $argv) -ge 1
+    set files $argv
+else
+    set files *
+end
+
+
+for f in $files
+    if test -f "$f"
+        set ext (extension "$f")
+        set name (rootname "$f")
+        set file_extension (echo "$f" | grep -E -o '[^.]*$')
+        if [ "$ext" != "$file_extension" ] ; and [ "$file_extension" != "mp4" ]
+            mv "$f" "$name.$ext"
+        end
+    end
+end
+
