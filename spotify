@@ -1,9 +1,5 @@
 #!/bin/sh
 
-STATUS=$(systemctl --user is-active spotifyd.service)
-
-if [ "$STATUS" = "inactive" ]; then
-    systemctl --user start spotifyd.service
-fi
+systemctl --user restart spotifyd.service
 
 spt
